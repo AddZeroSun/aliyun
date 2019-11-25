@@ -17,7 +17,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../web')));
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.static(path.resolve(__dirname, '../web/dist'))); //dist目录为静态文件
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
