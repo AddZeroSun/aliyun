@@ -1,0 +1,724 @@
+@charset "UTF-8";
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-size: .14rem;
+  font-weight: 400;
+  font-style: normal;
+  font-family: "微软雅黑";
+  text-size-adjust: 100%;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+html {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  font-size: 625%;
+}
+
+img,
+div,
+body,
+html,
+ul,
+li,
+a {
+  -webkit-touch-callout: none;
+}
+
+input,
+button {
+  outline: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #999;
+}
+
+html,
+body,
+.Register {
+  background: #fff;
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+html .Register-header,
+body .Register-header,
+.Register .Register-header {
+  width: 100%;
+  height: 1.75rem;
+  background: #0e1534;
+  padding-top: 15px;
+  box-sizing: border-box;
+}
+
+html .Register-header .Register-top-box,
+body .Register-header .Register-top-box,
+.Register .Register-header .Register-top-box {
+  width: 100%;
+  height: .46rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+html .Register-header .Register-top-box h3,
+body .Register-header .Register-top-box h3,
+.Register .Register-header .Register-top-box h3 {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+html .Register-header .Register-cont,
+body .Register-header .Register-cont,
+.Register .Register-header .Register-cont {
+  width: 100%;
+  height: .45rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 35px;
+}
+
+html .Register-header .Register-cont .Register-cont-box,
+body .Register-header .Register-cont .Register-cont-box,
+.Register .Register-header .Register-cont .Register-cont-box {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+html .Register-header .Register-cont .Register-cont-box .Register-cont-top-box,
+body .Register-header .Register-cont .Register-cont-box .Register-cont-top-box,
+.Register .Register-header .Register-cont .Register-cont-box .Register-cont-top-box {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+html .Register-header .Register-cont .Register-cont-box .Register-cont-top-box span,
+body .Register-header .Register-cont .Register-cont-box .Register-cont-top-box span,
+.Register .Register-header .Register-cont .Register-cont-box .Register-cont-top-box span {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: #616980;
+  display: flex;
+}
+
+html .Register-header .Register-cont .Register-cont-box .Register-cont-top-box em,
+body .Register-header .Register-cont .Register-cont-box .Register-cont-top-box em,
+.Register .Register-header .Register-cont .Register-cont-box .Register-cont-top-box em {
+  width: 80%;
+  position: absolute;
+  background: #60687f;
+  display: inline-block;
+  height: 2px;
+  margin-top: 2px;
+  left: 60%;
+}
+
+html .Register-header .Register-cont .Register-cont-box .Register-cont-top-box .whirt-em,
+body .Register-header .Register-cont .Register-cont-box .Register-cont-top-box .whirt-em,
+.Register .Register-header .Register-cont .Register-cont-box .Register-cont-top-box .whirt-em {
+  background: linear-gradient(to right, #fff, #60687f) 50%;
+}
+
+html .Register-header .Register-cont .Register-cont-box .Register-cont-top-box .whirt-span,
+body .Register-header .Register-cont .Register-cont-box .Register-cont-top-box .whirt-span,
+.Register .Register-header .Register-cont .Register-cont-box .Register-cont-top-box .whirt-span {
+  background: #fff;
+}
+
+html .Register-header .Register-cont .Register-cont-box .Register-cont-top-box .whirts-em,
+body .Register-header .Register-cont .Register-cont-box .Register-cont-top-box .whirts-em,
+.Register .Register-header .Register-cont .Register-cont-box .Register-cont-top-box .whirts-em {
+  background: #fff;
+}
+
+html .Register-header .Register-cont .Register-cont-box p,
+body .Register-header .Register-cont .Register-cont-box p,
+.Register .Register-header .Register-cont .Register-cont-box p {
+  color: #60687f;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+html .Register-header .Register-cont .Register-cont-box .whirt-p,
+body .Register-header .Register-cont .Register-cont-box .whirt-p,
+.Register .Register-header .Register-cont .Register-cont-box .whirt-p {
+  color: #fff;
+}
+
+html .section,
+body .section,
+.Register .section {
+  background: #fff;
+  width: 100%;
+  height: auto;
+  padding: 0 .15rem;
+  position: relative;
+}
+
+html .section .Account-tit,
+body .section .Account-tit,
+.Register .section .Account-tit {
+  width: 100%;
+  height: .46rem;
+  line-height: .46rem;
+}
+
+html .section .file-box,
+body .section .file-box,
+.Register .section .file-box {
+  width: 100%;
+  height: auto;
+  padding: 15px 0;
+  border-bottom: 1px solid #dfdfdf;
+  display: flex;
+  justify-content: left;
+  position: relative;
+}
+
+html .section .file-box p,
+body .section .file-box p,
+.Register .section .file-box p {
+  position: relative;
+  width: .85rem;
+  font-weight: 600;
+  padding-left: .07rem;
+  box-sizing: border-box;
+}
+
+html .section .file-box p span,
+body .section .file-box p span,
+.Register .section .file-box p span {
+  color: red;
+  font-weight: 600;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+html .section .file-box input,
+body .section .file-box input,
+.Register .section .file-box input {
+  width: 1.2rem;
+  height: 1.2rem;
+  background: red;
+  position: absolute;
+  left: .85rem;
+  opacity: 0;
+}
+
+html .section .file-box .Register-img-box,
+body .section .file-box .Register-img-box,
+.Register .section .file-box .Register-img-box {
+  width: 1.2rem;
+  height: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f4f4f4;
+}
+
+html .section .file-box .Register-img-box img,
+body .section .file-box .Register-img-box img,
+.Register .section .file-box .Register-img-box img {
+  width: .48rem;
+  height: .4rem;
+}
+
+html .section .file-box .Register-img-box span,
+body .section .file-box .Register-img-box span,
+.Register .section .file-box .Register-img-box span {
+  font-size: .12rem;
+  margin-top: 15px;
+}
+
+html .section .file-box .img-file,
+body .section .file-box .img-file,
+.Register .section .file-box .img-file {
+  width: 1.2rem;
+  height: 1.2rem;
+  position: relative;
+  z-index: 80;
+}
+
+html .section .file-box .clearfile,
+body .section .file-box .clearfile,
+.Register .section .file-box .clearfile {
+  width: .2rem;
+  height: .2rem;
+  position: absolute;
+  left: 1.95rem;
+  top: .05rem;
+  z-index: 99;
+}
+
+html .section .input-box,
+body .section .input-box,
+.Register .section .input-box {
+  width: 100%;
+  height: .5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+html .section .input-box p,
+body .section .input-box p,
+.Register .section .input-box p {
+  position: relative;
+  width: .85rem;
+  font-weight: 600;
+  padding-left: .07rem;
+  box-sizing: border-box;
+}
+
+html .section .input-box p span,
+body .section .input-box p span,
+.Register .section .input-box p span {
+  color: red;
+  font-weight: 600;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+html .section .input-box .inp-right,
+body .section .input-box .inp-right,
+.Register .section .input-box .inp-right {
+  height: 100%;
+  flex: 1;
+  position: relative;
+  display: flex;
+}
+
+html .section .input-box .inp-right input,
+body .section .input-box .inp-right input,
+.Register .section .input-box .inp-right input {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding-right: 40px;
+  -webkit-appearance: none;
+}
+
+html .section .input-box .inp-right div,
+body .section .input-box .inp-right div,
+.Register .section .input-box .inp-right div {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding-right: 40px;
+  display: flex;
+  align-items: center;
+  font-weight: 0;
+}
+
+html .section .input-box .inp-right div .placeholder,
+body .section .input-box .inp-right div .placeholder,
+.Register .section .input-box .inp-right div .placeholder {
+  width: 100%;
+  color: #909090;
+  padding: 0;
+  font-weight: 400;
+  width: 100%;
+}
+
+html .section .input-box .inp-right div .inp-right-p,
+body .section .input-box .inp-right div .inp-right-p,
+.Register .section .input-box .inp-right div .inp-right-p {
+  width: 100%;
+  color: #000;
+  padding: 0;
+  font-weight: 400;
+}
+
+html .section .input-box .inp-right img,
+body .section .input-box .inp-right img,
+.Register .section .input-box .inp-right img {
+  width: .35rem;
+  height: .35rem;
+  position: absolute;
+  right: 2px;
+  top: 7px;
+  z-index: 60;
+}
+
+html .section .input-box .inp-right .radio-box,
+body .section .input-box .inp-right .radio-box,
+.Register .section .input-box .inp-right .radio-box {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  align-items: center;
+}
+
+html .section .input-box .inp-right .radio-box .radio,
+body .section .input-box .inp-right .radio-box .radio,
+.Register .section .input-box .inp-right .radio-box .radio {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-right: 5px;
+  position: relative;
+  -webkit-appearance: none;
+}
+
+html .section .input-box .inp-right .radio-box .radio .radio-span,
+body .section .input-box .inp-right .radio-box .radio .radio-span,
+.Register .section .input-box .inp-right .radio-box .radio .radio-span {
+  width: 10px;
+  height: 10px;
+  background: red;
+  border-radius: 5px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -5px;
+  margin-left: -5px;
+}
+
+html .section .prompt-box,
+body .section .prompt-box,
+.Register .section .prompt-box {
+  width: 100%;
+  height: .5rem;
+  line-height: .5rem;
+  padding-left: 8px;
+  color: #666;
+}
+
+html .section .prompt-box span,
+body .section .prompt-box span,
+.Register .section .prompt-box span {
+  color: red;
+}
+
+html .section .Register-button,
+body .section .Register-button,
+.Register .section .Register-button {
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+html .section .Register-button input,
+body .section .Register-button input,
+.Register .section .Register-button input {
+  height: 44px;
+  width: 100%;
+  background: #2e2e2e;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  font-size: .16rem;
+  -webkit-appearance: none;
+}
+
+html .section .mint-popup > .picker > .picker-items > .picker-slot .picker-slot-center > .picker-slot-wrapper,
+body .section .mint-popup > .picker > .picker-items > .picker-slot .picker-slot-center > .picker-slot-wrapper,
+.Register .section .mint-popup > .picker > .picker-items > .picker-slot .picker-slot-center > .picker-slot-wrapper {
+  transform: translate(0px, 0px) translateZ(0px);
+}
+
+html .section .img-wrap,
+body .section .img-wrap,
+.Register .section .img-wrap {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+html .section .img-wrap .img-wrap-box,
+body .section .img-wrap .img-wrap-box,
+.Register .section .img-wrap .img-wrap-box {
+  max-width: 80%;
+  height: auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+html .section .img-wrap .img-wrap-box .img-wrap-box-img,
+body .section .img-wrap .img-wrap-box .img-wrap-box-img,
+.Register .section .img-wrap .img-wrap-box .img-wrap-box-img {
+  width: 100%;
+  height: 100%;
+}
+
+html .section .img-wrap .img-wrap-box .img-wrap-box-clear,
+body .section .img-wrap .img-wrap-box .img-wrap-box-clear,
+.Register .section .img-wrap .img-wrap-box .img-wrap-box-clear {
+  position: absolute;
+  right: -.2rem;
+  top: -.2rem;
+}
+
+html .section .Account-next,
+body .section .Account-next,
+.Register .section .Account-next {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: .2rem 0 .4rem 0;
+}
+
+html .section .Account-next a,
+body .section .Account-next a,
+.Register .section .Account-next a {
+  width: 80%;
+  height: auto;
+  display: block;
+}
+
+html .section .Account-next a input,
+body .section .Account-next a input,
+.Register .section .Account-next a input {
+  width: 100%;
+  height: .44rem;
+  border-radius: 5px;
+  border: 1px solid #2e2e2e;
+  -webkit-appearance: none;
+}
+
+html .section .Account-next a .Account-nextbtn,
+body .section .Account-next a .Account-nextbtn,
+.Register .section .Account-next a .Account-nextbtn {
+  background: #2e2e2e;
+  color: #fff;
+}
+
+html .section .Account-next a .Account-backbtn,
+body .section .Account-next a .Account-backbtn,
+.Register .section .Account-next a .Account-backbtn {
+  background: #fff;
+  color: #2e2e2e;
+}
+
+html .section .bank-list,
+body .section .bank-list,
+.Register .section .bank-list {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -175px;
+  left: 0;
+  background: #fff;
+  z-index: 99;
+}
+
+html .section .bank-list .bank-list-ul,
+body .section .bank-list .bank-list-ul,
+.Register .section .bank-list .bank-list-ul {
+  width: 100%;
+  height: auto;
+}
+
+html .section .bank-list .bank-list-ul .bank-li,
+body .section .bank-list .bank-list-ul .bank-li,
+.Register .section .bank-list .bank-list-ul .bank-li {
+  width: 100%;
+  height: .5rem;
+  border-bottom: 1px solid #ccc;
+  background: #fff;
+  padding: 10px 5%;
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+}
+
+html .section .Identity-tit,
+body .section .Identity-tit,
+.Register .section .Identity-tit {
+  width: 100%;
+  height: .5rem;
+  border-bottom: 1px solid #ccc;
+}
+
+html .section .Identity-tit h2,
+body .section .Identity-tit h2,
+.Register .section .Identity-tit h2 {
+  width: 100%;
+  height: 100%;
+  font-size: .18rem;
+  font-weight: 800;
+  line-height: .5rem;
+}
+
+html .section .Identity-cont,
+body .section .Identity-cont,
+.Register .section .Identity-cont {
+  width: 100%;
+  height: auto;
+  padding: 15px 0 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+html .section .Identity-cont .Identity-cont-imgbox,
+body .section .Identity-cont .Identity-cont-imgbox,
+.Register .section .Identity-cont .Identity-cont-imgbox {
+  width: 100%;
+  height: .9rem;
+  display: flex;
+}
+
+html .section .Identity-cont .Identity-cont-imgbox p,
+body .section .Identity-cont .Identity-cont-imgbox p,
+.Register .section .Identity-cont .Identity-cont-imgbox p {
+  width: .85rem;
+  font-weight: 800;
+  margin-top: 10px;
+}
+
+html .section .Identity-cont .Identity-cont-imgbox img,
+body .section .Identity-cont .Identity-cont-imgbox img,
+.Register .section .Identity-cont .Identity-cont-imgbox img {
+  width: .7rem;
+  height: .55rem;
+  margin-top: 10px;
+}
+
+html .section .Identity-cont .Identity-cont-imgbox .logoimg,
+body .section .Identity-cont .Identity-cont-imgbox .logoimg,
+.Register .section .Identity-cont .Identity-cont-imgbox .logoimg {
+  width: .7rem;
+  height: .7rem;
+}
+
+html .section .Identity-cont .Identity-cont-box,
+body .section .Identity-cont .Identity-cont-box,
+.Register .section .Identity-cont .Identity-cont-box {
+  width: 100%;
+  height: .3rem;
+  display: flex;
+}
+
+html .section .Identity-cont .Identity-cont-box .Identity-cont-box-tit,
+body .section .Identity-cont .Identity-cont-box .Identity-cont-box-tit,
+.Register .section .Identity-cont .Identity-cont-box .Identity-cont-box-tit {
+  width: .85rem;
+  font-weight: 800;
+  line-height: .3rem;
+}
+
+html .section .Identity-cont .Identity-cont-box .Identity-cont-box-p,
+body .section .Identity-cont .Identity-cont-box .Identity-cont-box-p,
+.Register .section .Identity-cont .Identity-cont-box .Identity-cont-box-p {
+  line-height: .3rem;
+}
+
+html .section .Identity-bot-box,
+body .section .Identity-bot-box,
+.Register .section .Identity-bot-box {
+  width: 100%;
+  height: auto;
+  padding: 10px 0;
+}
+
+html .section .Identity-bot-box .Identity-cont-box,
+body .section .Identity-bot-box .Identity-cont-box,
+.Register .section .Identity-bot-box .Identity-cont-box {
+  width: 100%;
+  height: .3rem;
+  display: flex;
+}
+
+html .section .Identity-bot-box .Identity-cont-box .Identity-cont-box-tit,
+body .section .Identity-bot-box .Identity-cont-box .Identity-cont-box-tit,
+.Register .section .Identity-bot-box .Identity-cont-box .Identity-cont-box-tit {
+  width: .85rem;
+  font-weight: 800;
+  line-height: .3rem;
+}
+
+html .section .Identity-bot-box .Identity-cont-box .Identity-cont-box-p,
+body .section .Identity-bot-box .Identity-cont-box .Identity-cont-box-p,
+.Register .section .Identity-bot-box .Identity-cont-box .Identity-cont-box-p {
+  line-height: .3rem;
+}
+
+html .section .Success-tit-box,
+body .section .Success-tit-box,
+.Register .section .Success-tit-box {
+  width: 100%;
+  height: auto;
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #ccc;
+}
+
+html .section .Success-tit-box .Success-tit,
+body .section .Success-tit-box .Success-tit,
+.Register .section .Success-tit-box .Success-tit {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+html .section .Success-tit-box .Success-title,
+body .section .Success-tit-box .Success-title,
+.Register .section .Success-tit-box .Success-title {
+  width: 100%;
+  padding: 10px 10px 0 10px;
+  line-height: 1.5;
+}
+
+html .section .Success-access-box,
+body .section .Success-access-box,
+.Register .section .Success-access-box {
+  width: 100%;
+  padding: 10px;
+}
+
+html .section .Success-access-box .Success-access,
+body .section .Success-access-box .Success-access,
+.Register .section .Success-access-box .Success-access {
+  font-weight: 600;
+  line-height: 1.5;
+  font-size: 13px;
+}
+
+html .section .Success-access-box span,
+body .section .Success-access-box span,
+.Register .section .Success-access-box span {
+  font-weight: 600;
+  line-height: 1.5;
+  font-size: 13px;
+}

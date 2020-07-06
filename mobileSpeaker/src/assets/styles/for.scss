@@ -1,0 +1,46 @@
+@for $i from 1 through 100 {
+  .width-#{$i} {
+    width: $i / 100 * 100%;
+  }
+  .height-#{$i} {
+    height: $i / 100 * 100%;
+  }
+}
+
+@for $i from 1 through 1000 {
+  .min-width-#{$i} {
+    min-width: $i + px;
+  }
+}
+
+@for $i from 1 through 1000 {
+  .height-#{$i}px {
+    height: $i + px;
+  }
+}
+@for $i from 1 through 300 {
+  .padding-left-#{$i} {
+    padding-left: $i + px;
+  }
+  .padding-right-#{$i} {
+    padding-right: $i + px;
+  }
+  .padding-top-#{$i} {
+    padding-top: $i + px;
+  }
+  .padding-bottom-#{$i} {
+    padding-bottom: $i + px;
+  }
+  .margin-left-#{$i} {
+    margin-left: $i + px;
+  }
+  .margin-right-#{$i} {
+    margin-right: $i + px;
+  }
+  .margin-top-#{$i} {
+    margin-top: $i + px;
+  }
+  .margin-bottom-#{$i} {
+    margin-bottom: $i + px;
+  }
+}

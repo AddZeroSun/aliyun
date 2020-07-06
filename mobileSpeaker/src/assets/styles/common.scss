@@ -1,0 +1,15 @@
+.display-flex { display: flex; }
+.fill-left { margin-left: auto; }
+.fill-right { margin-right: auto; }
+.fill-both { margin: 0 auto; }
+
+.flex-left { justify-content: flex-start; }
+.flex-right { justify-content: flex-end; }
+.flex-center { justify-content: center; }
+.flex-between { justify-content: space-between; }
+.flex-around { justify-content: space-around; }
+.flex-top { align-items: flex-start; }
+.flex-middle { align-items: center; }
+.flex-bottom { align-items: flex-end; }
+.flex-stretch { align-items: stretch; }
+.flex-baseline { align-items: baseline; }
