@@ -1,12 +1,6 @@
 <template>
   <div class="components_container">
     <el-table ref="OriginalManagementTable" border :data="dataCon" highlight-current-row>
-      <!-- <el-table-column align="center" type="selection" width="55" /> -->
-      <!-- <el-table-column align="center" label="权重" width="120" fixed="left">
-        <template slot-scope="scope">
-          <el-input-number v-model="scope.row.sort" :controls="false" size="small" controls-position="right" :min="0" :max="999" @change="((newVal, oldVal)=>{handleIndexChange(newVal, oldVal, scope)})" />
-        </template>
-      </el-table-column> -->
       <el-table-column align="center" property="sort" width="70" label="权重" />
       <el-table-column align="center" property="id" width="70" label="课程ID" />
       <el-table-column align="center" label="封面" width="150">
@@ -24,27 +18,14 @@
       <el-table-column align="center" property="collect_num" label="收藏数" />
       <el-table-column align="center" label="显示" width="80">
         <template slot-scope="scope">
-          <div v-if="scope.row.is_show === 1" type="primary" size="small" @click="editArtistShow(scope.row)">显示</div>
-          <div v-if="scope.row.is_show === 0" type="danger" size="small" @click="editArtistShow(scope.row)">隐藏</div>
+          <div v-if="scope.row.is_show === 1">显示</div>
+          <div v-if="scope.row.is_show === 0">隐藏</div>
         </template>
       </el-table-column>
-      <!-- <el-table-column align="center" fixed="right" label="置顶" width="150">
-        <template slot-scope="scope">
-          <el-switch
-            v-model="scope.row.stick"
-            :active-value="1"
-            :inactive-value="0"
-            active-color="#409eff"
-            inactive-color="#dcdfe6"
-            @change="((val)=>{editArtistStick(val, scope.row)})"
-          >
-          </el-switch>
-        </template>
-      </el-table-column> -->
       <el-table-column align="center" label="推荐" width="80">
         <template slot-scope="scope">
-          <div v-if="scope.row.is_recommend === 1" type="primary" size="small">推荐</div>
-          <div v-if="scope.row.is_recommend === 0" type="success" size="small">不推荐</div>
+          <div v-if="scope.row.is_recommend === 1">推荐</div>
+          <div v-if="scope.row.is_recommend === 0">不推荐</div>
         </template>
       </el-table-column>
       <el-table-column align="center" fixed="right" label="操作" width="100">
@@ -60,7 +41,6 @@
   </div>
 </template>
 <script>
-// import { getOriginalStatus } from '@/api/originalManagement.js'
 export default {
   name: 'OriginalManagementTable',
   components: {
@@ -82,7 +62,6 @@ export default {
   data() {
     return {
       dataCon: this.dataList,
-      //   dataCon: [{}, {}], // 测试数据
       statusList: this.statuslist
     }
   },

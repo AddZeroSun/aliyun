@@ -47,13 +47,6 @@
               </el-form-item>
             </el-col>
           </el-row>
-          <!-- <el-row>
-            <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
-              <el-form-item label="昵称" prop="nick_name">
-                <el-input v-model="dataList.nick_name" :maxlength="20" placeholder="请输入昵称"></el-input>
-              </el-form-item>
-            </el-col>
-          </el-row> -->
           <el-row>
             <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
               <el-form-item label="手机号" prop="phone">
@@ -71,43 +64,9 @@
               </el-form-item>
             </el-col>
           </el-row>
-          <!-- <el-row>
-            <el-col :xs="24" :sm="24" :md="24" :lg="20" :xl="20">
-              <el-form-item label="主页顶图" prop="top_img">
-                <div class="upload_con">
-                  <el-upload
-                    class="original_image"
-                    :action="action()"
-                    drag
-                    :data="setting_1_Data"
-                    :show-file-list="false"
-                    :http-request="uploadImg"
-                    :before-upload="beforeUpload"
-                  >
-                    <img v-if="imageUrl_1" :src="imageUrl_1" class="original_image_avatar">
-                    <i v-else class="el-icon-plus original_image_icon"></i>
-                    <div v-if="imageUrl_1" class="hover_con">
-                      <p class="hover_con_list">
-                        <i class="hover_con_msg el-icon-plus"></i>
-                        <i
-                          class="hover_con_msg el-icon-zoom-in"
-                          @click.stop="openImageView(imageUrl_1)"
-                        ></i>
-                      </p>
-                    </div>
-                  </el-upload>
-                  <progress-bar ref="proBar_1" :showprogress="proBar_1"></progress-bar>
-                </div>
-                <div>
-                  <p class="msg">图片仅支持JPG、JPEG、PNG格式，文件小于200KB。建议：长宽1:1，尺寸小于500像素。</p>
-                </div>
-              </el-form-item>
-            </el-col>
-          </el-row> -->
           <el-row>
             <el-col :xs="24" :sm="24" :md="24" :lg="10" :xl="10">
               <el-form-item label="名师简介">
-                <!-- <el-input v-model="dataList.info" placeholder="请输入艺术家简介"></el-input> -->
                 <el-input
                   v-model="dataList.info"
                   type="textarea"
@@ -194,7 +153,6 @@ export default {
         name: '', // 姓名
         password: '', // 密码
         sex: '', // 性别1男  2女  0未知
-        // artist_type: [], // 艺术家风格
         honor: '', // 头衔
         // head: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg', // 头像
         head: '', // 头像
@@ -314,24 +272,12 @@ export default {
       })
     }
   },
-  created() {
-    // this.getArtistTypeData()
-  },
+  created() {},
   mounted() {
   },
   destroyed() {
   },
   methods: {
-    // 获取艺术家类型
-    // getArtistTypeData() {
-    //   getArtistType().then(res => {
-    //     if (res.data && res.status === 200) {
-    //       this.artistTypeList = res.data
-    //     }
-    //   }).catch(err => {
-    //     console.log(err)
-    //   })
-    // },
     // 放大图片
     openImageView(_imgUrl) {
       this.viewImageUrl = _imgUrl
@@ -339,7 +285,6 @@ export default {
     },
     // 剪切图片
     cropSuccess(resData) {
-      // console.log('resData', resData)
       const _this = this
       this.uploadTeacherImageData(resData.file, function(res) {
         if (res && res.code === 200) {
@@ -352,7 +297,6 @@ export default {
           _this.imagecropperShow = false
         }
       })
-      // this.image = resData.files.avatar
     },
     close() {
       this.imagecropperShow = false
@@ -402,8 +346,6 @@ export default {
       const _URL = window.URL || window.webkitURL
       const img = new Image()
       img.onload = function() {
-        // const imgWidth = img.width
-        // const imgHight = img.height
         const valid = img.width === width && img.height === height
         if (_isCheck) {
           if (valid) {
@@ -420,7 +362,6 @@ export default {
     },
     // 上传图片
     uploadTeacherImageData(_file, callback) {
-      // const _this = this
       const formData = new FormData()
       formData.append('file', _file)
       uploadTeacherImage(formData).then(res => {
@@ -431,7 +372,6 @@ export default {
             type: 'success'
           })
           callback(res)
-          // console.log(this.newImgUrl)
         } else {
           this.$message({
             message: res.msg,
@@ -444,7 +384,6 @@ export default {
       })
     },
     action(val) {
-      // this.imgType = val
       return 'uplodResultsScore'
     },
     beforeUpload(file) {
@@ -483,23 +422,14 @@ export default {
                   _this.uploadTeacherImageData(param.file, function(res) {
                     if (res.data && res.status === 200) {
                       _this.$refs.proBar_1.endProgressBar()
-                      // _this.shSize_1 = res.size
                       _this.proBar_1 = false
                       _this.imageUrl_1 = res.data
                       _this.dataList.top_img = res.data
                     } else {
                       _this.$refs.proBar_1.endProgressBar()
-                      // _this.shSize_1 = res.size
                       _this.proBar_1 = false
-                      // _this.imageUrl_1 = res.data
                     }
                   })
-                  // setTimeout(() => {
-                  //   _this.$refs.proBar_1.endProgressBar()
-                  //   _this.shSize_1 = res.size
-                  //   _this.proBar_1 = false
-                  //   _this.imageUrl_1 = URL.createObjectURL(param.file)
-                  // }, 1000)
                   break
                 default:
                   break
@@ -514,19 +444,16 @@ export default {
       return new Promise((resolve, reject) => {
         this.$refs.teacherCon.validate((valid) => {
           if (valid) {
-            // this.$emit('submit-work-con', this.dataList)
             const data = {
               code: 200,
               data: this.dataList
             }
-            // callback(data)
             resolve(data)
           } else {
             const data = {
               code: 500,
               data: this.dataList
             }
-            // callback(data)
             resolve(data)
             return false
           }
@@ -568,8 +495,6 @@ export default {
     text-align: center;
   }
   .original_image_avatar {
-    // width: 150px;
-    // height: 150px;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -656,7 +581,6 @@ export default {
   }
   // 高清
   .upload_hd_con {
-    // padding-top: 30px;
     width: 120PX;
   }
   .hover_con_list {

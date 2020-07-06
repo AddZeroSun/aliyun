@@ -9,13 +9,6 @@
           label-width="100px"
           class="demo-dataList"
         >
-          <!-- <el-row>
-            <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
-              <el-form-item label="课程id" prop="phone">
-                <el-input v-model="dataList.phone" :maxlength="11" placeholder="请输入课程id"></el-input>
-              </el-form-item>
-            </el-col>
-          </el-row> -->
           <el-row>
             <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
               <el-form-item label="课程名称" prop="course_name">
@@ -23,13 +16,6 @@
               </el-form-item>
             </el-col>
           </el-row>
-          <!-- <el-row>
-            <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
-              <el-form-item label="讲师" prop="teacher_name">
-                <el-input v-model="dataList.teacher_name" :maxlength="20" placeholder="请输入讲师姓名"></el-input>
-              </el-form-item>
-            </el-col>
-          </el-row> -->
           <el-row>
             <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
               <el-form-item label="讲师" prop="teacher_id">
@@ -47,24 +33,9 @@
               </el-form-item>
             </el-col>
           </el-row>
-          <!-- <el-row>
-            <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
-              <el-form-item label="课程规格" prop="course_spe">
-                <el-select v-model="dataList.course_spe" placeholder="请选择">
-                  <el-option
-                    v-for="item in spec_options"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value"
-                  ></el-option>
-                </el-select>
-              </el-form-item>
-            </el-col>
-          </el-row> -->
           <el-row>
             <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
               <el-form-item label="章节" prop="chapter_number">
-                <!-- <el-input v-model="dataList.chapter_number" :maxlength="20" placeholder="请输入章节数"></el-input> -->
                 <span v-if="typeCon === 0" class="span_tips">需先完成添加课程，然后在章节管理页面添加章节(此处默认章节为0)</span>
                 <span v-if="typeCon === 1" class="span_txt">{{ dataList.chapter_number }}</span>
                 <span v-if="typeCon === 1" class="span_tips">需在章节管理页面编辑章节</span>
@@ -107,20 +78,6 @@
               </el-form-item>
             </el-col>
           </el-row>
-          <!-- <el-row>
-            <el-col :xs="24" :sm="24" :md="24" :lg="8" :xl="8">
-              <el-form-item label="状态" prop="nick_name">
-                <el-select v-model="dataList.nick_name" placeholder="请选择">
-                  <el-option
-                    v-for="item in status_options"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value"
-                  ></el-option>
-                </el-select>
-              </el-form-item>
-            </el-col>
-          </el-row> -->
           <el-row>
             <el-col :xs="24" :sm="24" :md="24" :lg="20" :xl="20">
               <el-form-item label="封面图" prop="top_img">
@@ -166,14 +123,11 @@
 
 <script>
 import ProgressBar from '@/components/progress-bar'
-// import ImageCropper from '@/components/ImageCropper'
-// import { getArtistType, uploadArtistImage } from '@/api/artistManagement.js'
 import { uploadCourseImage, getTeacherId } from '@/api/courseManagement.js'
 export default {
   name: 'WorkCon',
   components: {
     ProgressBar
-    // ImageCropper
   },
   props: {
     list: {
@@ -215,18 +169,9 @@ export default {
         }
       ],
       teacher_options: [],
-      // 状态列表
-      //   status_options: [
-      //     { id: '', name: '全部' },
-      //     { id: 2, name: '待审核' },
-      //     { id: 1, name: '正常' },
-      //     { id: 3, name: '禁用' }
-      //   ],
-      //   artistTypeList: [{ scene_id: 1, scene_name: '客厅' }],
       imagecropperShow: false,
       resImagecropperShow: false,
       imagecropperKey: 0,
-      // image: 'https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191',
       viewImageUrl: '',
       dialogVisible: false,
       // 头像
@@ -255,10 +200,6 @@ export default {
         type: 1
       },
       rules: {
-        // phone: [{ required: false, message: '请输入手机号', trigger: 'blur' }],
-        // header_url: [
-        //   { required: true, message: '请上传头像', trigger: 'change' }
-        // ],
         top_img: [
           { required: true, message: '请上传主页图', trigger: 'change' }
         ],
@@ -281,19 +222,6 @@ export default {
         teacher_id: [
           { required: true, message: '请选择讲师', trigger: 'change' }
         ],
-        // teacher_name: [
-        //   { required: true, message: '请输入讲师名称', trigger: 'change' },
-        //   { min: 0, max: 20, message: '昵称在 1 到 20 个字符', trigger: 'blur' }
-        // ],
-        // password: [
-        //   { required: false, message: '请输入密码', trigger: 'change' },
-        //   {
-        //     pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,16}$/,
-        //     message: '密码为4-16位（含16）英文数字组合'
-        //   }
-        //   // { pattern: /^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\W_]+$)(?![a-z0-9]+$)(?![a-z\W_]+$)(?![0-9\W_]+$)[a-zA-Z0-9\W_]{4,16}$/, message: '密码为数字，小写字母，大写字母，特殊符号 至少包含三种，长度为 4 - 16位，（判断的时候不区分大小写)' }
-        // ],
-        // sex: [{ required: true, message: '请选择性别', trigger: 'change' }],
         acourse_type: [
           {
             type: 'array',
@@ -302,7 +230,6 @@ export default {
             trigger: 'change'
           }
         ]
-        // desc: [{ required: false, message: '请填写活动形式', trigger: 'blur' }]
       }
     }
   },
@@ -351,18 +278,6 @@ export default {
   mounted() {},
   destroyed() {},
   methods: {
-    // 获取艺术家类型
-    // getArtistTypeData() {
-    //   getArtistType()
-    //     .then(res => {
-    //       if (res.data && res.status === 200) {
-    //         this.artistTypeList = res.data
-    //       }
-    //     })
-    //     .catch(err => {
-    //       console.log(err)
-    //     })
-    // },
     // 获取所有名师id和对应姓名
     getTeacherIdList() {
       getTeacherId()
@@ -385,7 +300,6 @@ export default {
     },
     // 剪切图片
     cropSuccess(resData) {
-      // console.log('resData', resData)
       const _this = this
       this.uploadCourseImageData(resData.file, function(res) {
         if (res && res.code === 200) {
@@ -398,7 +312,6 @@ export default {
           _this.imagecropperShow = false
         }
       })
-      // this.image = resData.files.avatar
     },
     close() {
       this.imagecropperShow = false
@@ -448,8 +361,6 @@ export default {
       const _URL = window.URL || window.webkitURL
       const img = new Image()
       img.onload = function() {
-        // const imgWidth = img.width
-        // const imgHight = img.height
         const valid = img.width === width && img.height === height
         if (_isCheck) {
           if (valid) {
@@ -466,7 +377,6 @@ export default {
     },
     // 上传图片
     uploadCourseImageData(_file, callback) {
-      // const _this = this
       const formData = new FormData()
       formData.append('file', _file)
       uploadCourseImage(formData)
@@ -478,7 +388,6 @@ export default {
               type: 'success'
             })
             callback(res)
-            // console.log(this.newImgUrl)
           } else {
             this.$message({
               message: res.msg,
@@ -492,7 +401,6 @@ export default {
         })
     },
     action(val) {
-      // this.imgType = val
       return 'uplodResultsScore'
     },
     beforeUpload(file) {
@@ -536,23 +444,14 @@ export default {
                     _this.uploadCourseImageData(param.file, function(res) {
                       if (res && res.code === 200) {
                         _this.$refs.proBar_1.endProgressBar()
-                        // _this.shSize_1 = res.size
                         _this.proBar_1 = false
                         _this.imageUrl_1 = res.url
                         _this.dataList.top_img = res.url
                       } else {
                         _this.$refs.proBar_1.endProgressBar()
-                        // _this.shSize_1 = res.size
                         _this.proBar_1 = false
-                        // _this.imageUrl_1 = res.data
                       }
                     })
-                    // setTimeout(() => {
-                    //   _this.$refs.proBar_1.endProgressBar()
-                    //   _this.shSize_1 = res.size
-                    //   _this.proBar_1 = false
-                    //   _this.imageUrl_1 = URL.createObjectURL(param.file)
-                    // }, 1000)
                     break
                   default:
                     break
@@ -568,19 +467,16 @@ export default {
       return new Promise((resolve, reject) => {
         this.$refs.chapterCon.validate(valid => {
           if (valid) {
-            // this.$emit('submit-work-con', this.dataList)
             const data = {
               code: 200,
               data: this.dataList
             }
-            // callback(data)
             resolve(data)
           } else {
             const data = {
               code: 500,
               data: this.dataList
             }
-            // callback(data)
             resolve(data)
             return false
           }
@@ -626,8 +522,6 @@ export default {
     text-align: center;
   }
   .original_image_avatar {
-    // width: 150px;
-    // height: 150px;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -716,7 +610,6 @@ export default {
   }
   // 高清
   .upload_hd_con {
-    // padding-top: 30px;
     width: 120px;
   }
   .hover_con_list {
@@ -724,7 +617,6 @@ export default {
     text-align: center;
     position: absolute;
     top: 50%;
-    // left: 50%;
     transform: translateY(-50%);
     margin: 0;
   }

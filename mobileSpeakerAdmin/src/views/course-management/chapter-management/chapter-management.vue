@@ -3,7 +3,12 @@
     <el-card class="chapter_management_card">
       <div slot="header" class="chapter_management_header">
         <el-row>
-          <el-col :xs="24" :sm="24" :md="4" :lg="4" :xl="2">
+          <el-col :xs="1" :sm="1" :md="1" :lg="1" :xl="1" class="back">
+            <div class="add_edit_theme_manager_header_list" @click="goBack">
+              <i style="font-size:40px" class="el-icon-arrow-left"></i>
+            </div>
+          </el-col>
+          <el-col :xs="22" :sm="22" :md="4" :lg="2" :xl="2">
             <div class="chapter_management_header_list">
               <span>{{ this.$route.meta.title }}</span>
             </div>
@@ -67,7 +72,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-// import defaultSettings from '@/settings'
+import mixin from '@/utils/mixin'
 import { chapterList, editChapterSort } from '@/api/courseManagement.js'
 import ChapterManagementTable from './components/ChapterManagementTable'
 export default {
@@ -75,6 +80,7 @@ export default {
   components: {
     ChapterManagementTable
   },
+  mixins: [mixin],
   data() {
     return {
       loading: false,
@@ -99,9 +105,7 @@ export default {
         { id: 0, name: '隐藏' }
       ],
       // 表格数据
-      tableData: [
-        // { name: 1, status: 1 }
-      ],
+      tableData: [],
       page: {
         currentPage: 1,
         pageSizes: [15, 30, 45, 50, 100],
@@ -116,14 +120,7 @@ export default {
       'name'
     ])
   },
-  watch: {
-    // $route: {
-    //   handler: function(route) {
-    //     this.redirect = route.query && route.query.redirect
-    //   },
-    //   immediate: true
-    // }
-  },
+  watch: {},
   created() {
     this.course_id = this.$route.query.course_id
     // 获取列表
@@ -135,6 +132,12 @@ export default {
   destroyed() {
   },
   methods: {
+    goBack() {
+      this.$router.push({
+        name: 'course-management',
+        query: {}
+      })
+    },
     // 回车事件
     keyupSubmit() {
       document.onkeydown = e => {
@@ -247,7 +250,6 @@ export default {
     },
     // 分页
     handleSizeChange(val) {
-      // console.log(`每页 ${val} 条`)
       this.page.pageSize = val
       this.drawTable()
     },
@@ -349,6 +351,9 @@ export default {
   }
   .chapter_management_header {
     // padding-top: 20px;
+  }
+  .add_edit_theme_manager_header_list {
+    // line-height: 40px;
   }
   .chapter_management_header_list {
     height: 40px;

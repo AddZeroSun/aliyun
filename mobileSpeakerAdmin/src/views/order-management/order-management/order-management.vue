@@ -8,11 +8,6 @@
               <span>{{ this.$route.meta.title }}</span>
             </div>
           </el-col>
-          <!-- <el-col :xs="24" :sm="24" :md="24" :lg="1" :xl="1" class="add_btn">
-            <div>
-              <el-button type="primary" @click="openEditor(0, '')">添加</el-button>
-            </div>
-          </el-col> -->
         </el-row>
       </div>
       <div class="nav_title_content">
@@ -29,15 +24,6 @@
               <el-input v-model="searchData.orderNo" class="pub_input_input" placeholder="请输入订单编号" />
             </div>
           </el-col>
-          <!-- <el-col :xs="24" :sm="24" :md="24" :lg="6" :xl="4">
-            <div class="pub_input_content">
-              <span class="pub_input_title">订单类型</span>
-              <el-select v-model="searchData.order_type" class="pub_input_input" placeholder="请选择订单类型">
-                <el-option v-for="item in orderTypeList" :key="item.order_type_id" :label="item.order_type_name" :value="item.order_type_id">
-                </el-option>
-              </el-select>
-            </div>
-          </el-col> -->
         </el-row>
         <el-row class="nav_top">
           <el-col :xs="24" :sm="24" :md="24" :lg="6" :xl="4">
@@ -97,12 +83,6 @@
               <el-pagination background class="pagination" :current-page="page.currentPage" :page-sizes="page.pageSizes" :page-size="page.pageSize" layout="total, sizes, prev, pager, next, jumper" :page-count="page.total_page" @size-change="handleSizeChange" @current-change="handleCurrentChange" />
             </div>
           </el-tab-pane>
-          <!-- <el-tab-pane label="取消订单" name="4">
-            <order-table :datalist="tableData" @open-editor="openEditor"></order-table>
-            <div v-if="page.total_page" class="pagination_body">
-              <el-pagination background class="pagination" :current-page="page.currentPage" :page-sizes="page.pageSizes" :page-size="page.pageSize" layout="total, sizes, prev, pager, next, jumper" :page-count="page.total_page" @size-change="handleSizeChange" @current-change="handleCurrentChange" />
-            </div>
-          </el-tab-pane> -->
           <el-tab-pane label="支付失败" name="4">
             <order-table :datalist="tableData" @open-editor="openEditor"></order-table>
             <div v-if="page.total_page" class="pagination_body">
@@ -117,8 +97,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-// import defaultSettings from '@/settings'
-// import { orderList, expressList, orderDelivery, offlinePayDetail, examineOfflinePay } from '@/api/brandStoreOrderManagement.js'
 import { orderList } from '@/api/orderManagement.js'
 import OrderTable from './components/OrderTable'
 import mixin from '@/utils/mixin'
@@ -135,27 +113,15 @@ export default {
       showType: '0',
       // 搜索内容
       searchData: {
-        // product_type: '', // 商品类型 0全部订单，1预售订单
-        // order_type: '',
         id: '', // 订单id
         status: '', // 订单的状态：1->未支付；2->已支付，3->支付超时，4->支付失败
         orderNo: '', // 订单号
-        // tel: '', // 手机号
         start_time: '' // 下单时间 起始时间start_time[0] 收尾时间start_time[1]
-        // delivery_no: '', // 物流单号
-        // dataStr: '',
-        // account_name: '' // 银行账户名
       },
       // 详情
       editorData: {
         order_id: ''
       },
-      // // 订单类型
-      // orderTypeList: [
-      //   { order_type_id: '', order_type_name: '全部' },
-      //   { order_type_id: 0, order_type_name: '预售订单' }
-      // ],
-      // 订单状态1 => '等待付款',2 => '等待配送',3 => '等待收货',4 => '订单完成',5 => '订单已取消',6 => '订单已关闭'
       orderstatusList: [
         { order_type_id: '', order_type_name: '全部' },
         { order_type_id: 1, order_type_name: '待支付' },
@@ -206,12 +172,6 @@ export default {
     ])
   },
   watch: {
-    // $route: {
-    //   handler: function(route) {
-    //     this.redirect = route.query && route.query.redirect
-    //   },
-    //   immediate: true
-    // }
     showEditor(val) {
       if (val) {
         this.reFreshShowEditor = true
@@ -260,22 +220,6 @@ export default {
     this.keyupSubmit()
     // 获取列表
     this.drawTable()
-
-    // const page = this.$route.name
-    // this.getSearchData(page).then(res => {
-    //   // console.log(res)
-    //   if (res.code === 200) {
-    //     this.searchData = res.searchData
-    //     this.page = res.pageData
-    //     this.showType = res.otherData.showType
-    //     // const other = res.otherData
-    //     this.drawTable()
-    //   } else {
-    //     this.drawTable()
-    //   }
-    // }).catch(err => {
-    //   console.log(err)
-    // })
   },
   mounted() {
   },
@@ -330,13 +274,6 @@ export default {
       } else {
         searchTime = this.searchData.start_time
       }
-      //   if (this.searchData.start_time !== null && this.searchData.start_time !== '') {
-      //     const data = `${this.searchData.start_time[0]} - ${this.searchData.start_time[1]}`
-      //     this.searchData.dataStr = data
-      //   } else {
-      //     this.searchData.dataStr = ''
-      //   }
-      //   const formData = new FormData()
       const jsonData = {
         id: this.searchData.id,
         orderNo: this.searchData.orderNo,
@@ -349,12 +286,7 @@ export default {
       orderList(jsonData).then(res => {
         if (res.data && res.code === 200) {
           this.tableData = res.data
-          //   this.tableData = [{ id: 1001 }] // test
-          // this.page.total = parseInt(this.page.pageSize) * parseInt(res.data.total_page)
           this.page.total_page = parseInt(res.total)
-          // if (this.page.total_page < 2) {
-          //   this.page.total = this.tableData.length
-          // }
         }
       }).catch(err => {
         console.log(err)
@@ -377,7 +309,6 @@ export default {
           query: { id: _row.id }
         })
       }
-      // this.showEditor = true
     },
     // 渲染表格
     drawTable() {
@@ -391,17 +322,10 @@ export default {
     // 查找
     refreshTableS() {
       this.page.currentPage = 1
-      // this.searchData.product_type = this.searchData.order_type
-      // if (this.searchData.order_type === '') {
-      //   this.showType = '0'
-      // } else {
-      //   this.showType = '1'
-      // }
       this.drawTable()
     },
     // 分页
     handleSizeChange(val) {
-      // console.log(`每页 ${val} 条`)
       this.page.pageSize = val
       this.drawTable()
     },

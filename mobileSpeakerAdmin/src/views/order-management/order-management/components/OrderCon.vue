@@ -6,16 +6,6 @@
           <el-col :xs="24" :sm="24" :md="24" :lg="3" :xl="3">
             <span class="title_con_msg">订单编号：{{ orderInfo.orderNo }}</span>
           </el-col>
-          <!-- <el-col :xs="24" :sm="24" :md="24" :lg="10" :xl="10" class="step_r">
-            <div class="order_step_con">
-              <el-steps :active="step_active" finish-status="success">
-                <el-step title="待支付"></el-step>
-                <el-step title="待发货"></el-step>
-                <el-step title="待收货"></el-step>
-                <el-step title="订单完成"></el-step>
-              </el-steps>
-            </div>
-          </el-col> -->
         </el-row>
       </div>
     </div>
@@ -94,18 +84,6 @@
                       </el-form-item>
                     </el-col>
                   </el-row>
-                  <!-- <el-row>
-                    <el-col :xs="24" :sm="24" :md="24" :lg="10" :xl="10">
-                      <el-form-item label="下单用户" class="item_c">
-                        <span>{{ orderInfo.phone }}<span v-if="orderInfo.username !==''">({{ orderInfo.username }})</span>  ID:{{ orderInfo.user_id }}</span>
-                      </el-form-item>
-                    </el-col>
-                    <el-col :xs="24" :sm="24" :md="24" :lg="10" :xl="10">
-                      <el-form-item label="下单渠道" class="item_c">
-                        <span>{{ orderInfo.source }}</span>
-                      </el-form-item>
-                    </el-col>
-                  </el-row> -->
                 </el-form>
               </el-col>
             </el-row>
@@ -484,7 +462,6 @@
 
 <script>
 import mixin from '@/utils/mixin'
-// import { expressList, orderDelivery, orderDeliveryDetail, editOrderDelivery } from '@/api/platformManagement.js'
 export default {
   name: 'OrderCon', // 订单
   components: {
@@ -510,32 +487,6 @@ export default {
       },
       collapseActive: ['0'],
       dataDetail: this.list,
-      // 订单信息
-      // orderInfo: {
-      //   pre_sale: 0, // 预售1，非预售0
-      //   id: '', // 订单id
-      //   orderNo: '', // 订单号
-      //   product_type_text: '', // 订单类型
-      //   order_status_text: '', // 订单状态
-      //   cancel_reason: '', // 原因
-      //   user_id: '', // 用户id
-      //   phone: '', // 用户手机号
-      //   username: '', // 用户名
-      //   pay_time: '', // 支付时间
-      //   pay_type_text: '', // 支付方式
-      //   transaction_id: '', // 交易号
-      //   deliver_time: '', // 发货时间
-      //   create_time: '', // 下单时间
-      //   source: '', // 下单渠道
-      //   confirm_receipt_time: '', // 订单确认时间
-      //   shop_name: '', // 卖家
-      //   freight_price: '', // 运费
-      //   discount_amount: '', // 优惠金额
-      //   total_price: '', // 商品总金额
-      //   pay_price: '', // 实际支付金额
-      //   order_note: '', // 订单备注
-      //   order_status: '' // // 订单的状态：1->新订单（等待付款）；2->已付款(等待配送)，3->已配送（等待收货），4->已收货（订单完成），5->订单已取消（用户取消或商家取消），6->订单已关闭（超时未支付或已退货完成等订单
-      // },
       orderInfo: {
         // 基本信息
         id: '', // 订单id
@@ -649,7 +600,6 @@ export default {
   },
   watch: {
     list(val) {
-      // console.log(val, 'val')
       // 订单信息
       this.dataDetail = val
       this.orderInfo = val
@@ -671,8 +621,6 @@ export default {
       this.openExpressInfo.is_logistics = val.expressInfo[0].is_logistics
       // 商品信息
       this.goodsInfo = val.goodsInfo
-      // //  证书
-      // this.certificateInfo = val.certificateInfo
       // 合计
       this.totalInfo.discount_amount = val.totalInfo.discount_amount
       this.totalInfo.freight_price = val.totalInfo.freight_price
@@ -698,33 +646,14 @@ export default {
       })
     }
   },
-  created() {
-    // console.log('版权')
-    // this.expressListData()
-  },
+  created() {},
   mounted() {
   },
   destroyed() {
   },
   methods: {
     // 查看订单详情
-    orderDeliveryDetailData(_id, _order_id) {
-      // const _this = this
-      // const data = {
-      //   id: _id,
-      //   id: _order_id
-      // }
-      // orderDeliveryDetail(data).then(res => {
-      //   if (res.data && res.status === 200) {
-      //     setTimeout(() => {
-      //       _this.listInfo = res.data
-      //     }, 1000)
-      //     this.showEditor = true
-      //   }
-      // }).catch(err => {
-      //   console.log(err)
-      // })
-    }
+    orderDeliveryDetailData(_id, _order_id) {}
   }
 }
 </script>
@@ -747,7 +676,6 @@ export default {
   // 标题
   .title_con {
     height: 30px;
-    // border-bottom: 1px solid #999999;
   }
   .title_con_c {
     padding-bottom: 20px;
@@ -763,11 +691,9 @@ export default {
     height: 50px;
     position: relative;
     top: 18px;
-    // line-height: 50px;
   }
   // 信息展示
   .detail_con {
-    // margin-top: 80px; // 如果有step步骤条则需要加上
     .demo_info_head {
       width: 80px;
     }
@@ -812,7 +738,6 @@ export default {
     font-size: 25px;
     height: 50px;
     line-height: 50px;
-    // float: right;
     margin-right: 10px;
     position: absolute;
     right: 0;

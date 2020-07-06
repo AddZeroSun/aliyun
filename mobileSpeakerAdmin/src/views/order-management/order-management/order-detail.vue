@@ -13,11 +13,6 @@
               <span class="header_title">{{ this.$route.meta.title }}</span>
             </div>
           </el-col>
-          <!-- <el-col :xs="24" :sm="24" :md="3" :lg="1" :xl="1" class="add_btn">
-            <div>
-              <el-button type="primary" @click="openDetail">修改</el-button>
-            </div>
-          </el-col> -->
         </el-row>
       </div>
       <div class="body">
@@ -33,10 +28,8 @@
 <script>
 import { mapGetters } from 'vuex'
 import mixin from '@/utils/mixin'
-// import { worksDetail } from '@/api/workLibraryDetail.js'
 // 品牌馆订单
 import OrderCon from './components/OrderCon.vue'
-// import { orderDetail } from '@/api/platformManagement.js'
 import { orderDetail } from '@/api/orderManagement.js'
 export default {
   name: 'OrderDetail', // 品牌馆订单
@@ -58,36 +51,17 @@ export default {
       'name'
     ])
   },
-  watch: {
-    // $route: {
-    //   handler: function(route) {
-    //     this.redirect = route.query && route.query.redirect
-    //   },
-    //   immediate: true
-    // }
-  },
+  watch: {},
   created() {
-    // console.log(this.$route.query)
     this.id = parseInt(this.$route.query.id)
     this.order_status = parseInt(this.$route.query.order_status)
     this.product_type = parseInt(this.$route.query.product_type)
     this.pay_type = parseInt(this.$route.query.pay_type)
     this.orderDetailData(this.id)
-    // window.addEventListener('storage', this.afterQRScan)
-    // 获取作品推荐列表
-    // this.drawTable()
   },
   mounted() {
   },
-  destroyed() {
-    // window.removeEventListener('storage', this.afterQRScan)
-  },
-  // beforeRouteLeave(to, from, next) {
-  //   if (to.name === 'platform-management' || to.name === 'brand-store-order-management') {
-  //     to.meta.keepAlive = true
-  //   }
-  //   next()
-  // },
+  destroyed() {},
   methods: {
     // 获取详情
     orderDetailData(_id) {
@@ -103,7 +77,6 @@ export default {
       })
     },
     changeDetail(val) {
-      // console.log('1111', val)
       this.orderDetailData(val)
     },
     goBack() {

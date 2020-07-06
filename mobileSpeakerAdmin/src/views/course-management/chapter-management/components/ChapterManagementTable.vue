@@ -1,13 +1,6 @@
 <template>
   <div class="components_container">
     <el-table ref="OriginalManagementTable" border :data="dataCon" highlight-current-row>
-      <!-- <el-table-column align="center" type="selection" width="55" /> -->
-      <!-- <el-table-column align="center" label="权重" width="120" fixed="left">
-        <template slot-scope="scope">
-          <el-input-number v-model="scope.row.sort" :controls="false" size="small" controls-position="right" :min="0" :max="999" @change="((newVal, oldVal)=>{handleIndexChange(newVal, oldVal, scope)})" />
-        </template>
-      </el-table-column> -->
-      <!-- <el-table-column align="center" property="sort" width="70" label="权重" /> -->
       <el-table-column align="center" property="id" width="70" label="ID" />
       <el-table-column align="center" property="name" show-overflow-tooltip label="章节名称" />
       <el-table-column align="center" property="num" label="章节" />
@@ -26,7 +19,6 @@
   </div>
 </template>
 <script>
-// import { getOriginalStatus } from '@/api/originalManagement.js'
 export default {
   name: 'OriginalManagementTable',
   components: {
@@ -48,7 +40,6 @@ export default {
   data() {
     return {
       dataCon: this.dataList
-      // dataCon: [{}, {}] // 测试数据
     }
   },
   watch: {
@@ -90,7 +81,6 @@ export default {
 .components_container{
   .pub_price_w {
     font-size: 18px;
-    // color: red;
   }
   .pub_m {
     padding-left: 5px;

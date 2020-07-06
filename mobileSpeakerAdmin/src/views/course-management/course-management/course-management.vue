@@ -29,32 +29,8 @@
               <el-input v-model="searchData.name" class="pub_input_input" placeholder="请输入课程名称" />
             </div>
           </el-col>
-          <!-- <el-col :xs="24" :sm="24" :md="24" :lg="6" :xl="4">
-            <div class="pub_input_content">
-              <span class="pub_input_title">讲师</span>
-              <el-input v-model="searchData.teacher_name" class="pub_input_input pub_input_input_phone" placeholder="请输入讲师姓名" />
-            </div>
-          </el-col> -->
         </el-row>
         <el-row class="nav_top">
-          <!-- <el-col :xs="24" :sm="24" :md="24" :lg="6" :xl="4">
-            <div class="pub_input_content">
-              <span class="pub_input_title">状态</span>
-              <el-select v-model="searchData.state" class="pub_input_input" placeholder="请选择状态">
-                <el-option v-for="item in stateList" :key="item.id" :label="item.name" :value="item.id">
-                </el-option>
-              </el-select>
-            </div>
-          </el-col> -->
-          <!-- <el-col :xs="24" :sm="24" :md="24" :lg="6" :xl="4">
-            <div class="pub_input_content">
-              <span class="pub_input_title">置顶</span>
-              <el-select v-model="searchData.placed_top" class="pub_input_input" placeholder="请选择置顶">
-                <el-option v-for="item in placedTop" :key="item.id" :label="item.name" :value="item.id">
-                </el-option>
-              </el-select>
-            </div>
-          </el-col> -->
           <el-col :xs="24" :sm="24" :md="24" :lg="6" :xl="4">
             <div class="pub_input_content">
               <span class="pub_input_title">是否显示</span>
@@ -89,24 +65,6 @@
               <el-pagination background class="pagination" :current-page="page.currentPage" :page-sizes="page.pageSizes" :page-size="page.pageSize" layout="total, sizes, prev, pager, next, jumper" :page-count="page.total_page" @size-change="handleSizeChange" @current-change="handleCurrentChange" />
             </div>
           </el-tab-pane>
-          <!-- <el-tab-pane label="已置顶" name="1">
-            <artist-management-table :datalist="tableData" :statuslist="statusList" @change-sort="changeTableSort" @open-editor="openEdit"></artist-management-table>
-            <div v-if="page.total_page" class="pagination_body">
-              <el-pagination class="pagination" :current-page="page.currentPage" :page-sizes="page.pageSizes" :page-size="page.pageSize" layout="total, sizes, prev, pager, next, jumper" :page-count="page.total_page" @size-change="handleSizeChange" @current-change="handleCurrentChange" />
-            </div>
-          </el-tab-pane>
-          <el-tab-pane label="已隐藏" name="2">
-            <artist-management-table :datalist="tableData" :statuslist="statusList" @change-sort="changeTableSort" @open-editor="openEdit"></artist-management-table>
-            <div v-if="page.total_page" class="pagination_body">
-              <el-pagination class="pagination" :current-page="page.currentPage" :page-sizes="page.pageSizes" :page-size="page.pageSize" layout="total, sizes, prev, pager, next, jumper" :page-count="page.total_page" @size-change="handleSizeChange" @current-change="handleCurrentChange" />
-            </div>
-          </el-tab-pane>
-          <el-tab-pane label="已禁用" name="3">
-            <artist-management-table :datalist="tableData" :statuslist="statusList" @change-sort="changeTableSort" @open-editor="openEdit"></artist-management-table>
-            <div v-if="page.total_page" class="pagination_body">
-              <el-pagination class="pagination" :current-page="page.currentPage" :page-sizes="page.pageSizes" :page-size="page.pageSize" layout="total, sizes, prev, pager, next, jumper" :page-count="page.total_page" @size-change="handleSizeChange" @current-change="handleCurrentChange" />
-            </div>
-          </el-tab-pane> -->
         </el-tabs>
       </div>
     </el-card>
@@ -115,7 +73,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-// import defaultSettings from '@/settings'
 import { courseList, editArtistSort, editArtistShow, editArtistStick, editArtistStatus } from '@/api/courseManagement.js'
 import CourseManagementTable from './components/CourseManagementTable'
 export default {
@@ -138,10 +95,7 @@ export default {
         is_recommend: '', // 推荐
         is_show: '' // 显示/隐藏
       },
-      statusList: [
-        // { id: 1, name: '正常' },
-        // { id: 2, name: '异常' }
-      ],
+      statusList: [],
       // 状态
       stateList: [
         { id: '', name: '全部' },
@@ -168,9 +122,7 @@ export default {
         { id: 0, name: '不推荐' }
       ],
       // 表格数据
-      tableData: [
-        // { name: 1, status: 1 }
-      ],
+      tableData: [],
       page: {
         currentPage: 1,
         pageSizes: [15, 30, 45, 50, 100],
@@ -185,14 +137,7 @@ export default {
       'name'
     ])
   },
-  watch: {
-    // $route: {
-    //   handler: function(route) {
-    //     this.redirect = route.query && route.query.redirect
-    //   },
-    //   immediate: true
-    // }
-  },
+  watch: {},
   created() {
     this.keyupSubmit()
     // 获取列表
@@ -244,8 +189,6 @@ export default {
         name: this.searchData.name,
         teacher_name: this.searchData.teacher_name,
         is_show: this.searchData.is_show,
-        // status: this.searchData.state,
-        // stick: '',
         is_recommend: this.searchData.is_recommend,
         page_size: this.page.pageSize,
         page: this.page.currentPage
@@ -254,11 +197,6 @@ export default {
         if (res.data && res.code === 200) {
           this.tableData = res.data
           this.page.total_page = parseInt(res.total)
-          //   this.page.total = parseInt(this.page.pageSize) * parseInt(res.data.total_page)
-          //   this.page.total_page = parseInt(res.data.total_page)
-          //   if (this.page.total_page < 2) {
-          //     this.page.total = this.tableData.length
-          //   }
         }
       }).catch(err => {
         console.log(err)
@@ -411,7 +349,6 @@ export default {
     },
     // 分页
     handleSizeChange(val) {
-      // console.log(`每页 ${val} 条`)
       this.page.pageSize = val
       this.drawTable()
     },

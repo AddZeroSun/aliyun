@@ -101,8 +101,6 @@ export default {
         id: _id
       }
       teacherDetail(data).then(res => {
-        // const _this = this
-        // console.log(res)
         if (res.data && res.code === 200) {
           this.teacher_data_list = res.data
         }
@@ -119,15 +117,10 @@ export default {
           _this.isCheck = true
           _this.dataList.phone = res.data.phone
           _this.dataList.type = res.data.type
-          //   _this.dataList.nick_name = res.data.nick_name
           _this.dataList.sex = res.data.sex
           _this.dataList.head = _this.$refs.teacherCon.imageUrl_0
           _this.dataList.top_img = _this.$refs.teacherCon.imageUrl_1
           _this.dataList.name = res.data.name
-          //   _this.dataList.password = res.data.password
-          //   _this.dataList.artist_type = res.data.artist_type
-          //   _this.dataList.honor = res.data.honor
-          //   _this.dataList.university = res.data.university
           _this.dataList.info = res.data.info
           _this.dataList.is_show = res.data.is_show
           _this.dataList.is_recommend = res.data.is_recommend
@@ -149,21 +142,15 @@ export default {
       const _this = this
       // 作品
       await _this.$refs.teacherCon.submitForm().then(res => {
-        // console.log('workCon', res)
         if (res.code === 200) {
           _this.isCheck = true
           _this.dataList.artist_id = res.data.artist_id
           _this.dataList.phone = res.data.phone
           _this.dataList.type = res.data.type
-          //   _this.dataList.nick_name = res.data.nick_name
           _this.dataList.sex = res.data.sex
           _this.dataList.head = _this.$refs.teacherCon.imageUrl_0
           _this.dataList.top_img = _this.$refs.teacherCon.imageUrl_1
           _this.dataList.name = res.data.name
-          //   _this.dataList.password = res.data.password
-          //   _this.dataList.artist_type = res.data.artist_type
-          //   _this.dataList.honor = res.data.honor
-          //   _this.dataList.university = res.data.university
           _this.dataList.info = res.data.info
           _this.dataList.is_show = res.data.is_show
           _this.dataList.is_recommend = res.data.is_recommend
@@ -189,19 +176,11 @@ export default {
         })
         return false
       }
-      //   if (this.dataList.top_img === '') {
-      //     this.$message({
-      //       message: '请上传艺术家主页顶图',
-      //       type: 'warning'
-      //     })
-      //     return false
-      //   }
       this.loading = true
       const jsonData = {
         phone: this.dataList.phone,
         sex: this.dataList.sex,
         head: this.dataList.head,
-        // head: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
         name: this.dataList.name,
         info: this.dataList.info,
         is_show: this.dataList.is_show,
@@ -210,7 +189,6 @@ export default {
       }
       createTeacher(jsonData).then(res => {
         if (res.data && res.code === 200) {
-          // console.log(res)
           this.$message({
             message: res.msg,
             type: 'success'
@@ -241,13 +219,6 @@ export default {
         })
         return false
       }
-      //   if (this.dataList.top_img === '') {
-      //     this.$message({
-      //       message: '主页顶图',
-      //       type: 'warning'
-      //     })
-      //     return false
-      //   }
       this.loading = true
       const jsonData = {
         id: this.id,
@@ -263,7 +234,6 @@ export default {
       }
       editTeacher(jsonData).then(res => {
         if (res && res.code === 200) {
-          // console.log(res)
           this.$message({
             message: res.msg,
             type: 'success'

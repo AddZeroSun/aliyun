@@ -71,12 +71,6 @@ export default {
     ])
   },
   watch: {
-    // $route: {
-    //   handler: function(route) {
-    //     this.redirect = route.query && route.query.redirect
-    //   },
-    //   immediate: true
-    // }
   },
   created() {
     this.id = this.$route.query.id
@@ -99,8 +93,6 @@ export default {
         id: _id
       }
       courseDetail(data).then(res => {
-        // const _this = this
-        // console.log(res)
         if (res.data && res.code === 200) {
           this.course_data_list = res.data
         }
@@ -127,8 +119,6 @@ export default {
           _this.dataList.is_show = res.data.is_show
           _this.dataList.is_recommend = res.data.is_recommend
           _this.dataList.sort = res.data.sort
-          //   _this.dataList.header_url = _this.$refs.courseCon.imageUrl_0
-          //   _this.dataList.top_img = _this.$refs.courseCon.imageUrl_1
         } else {
           _this.isCheck = false
         }
@@ -146,7 +136,6 @@ export default {
       const _this = this
       // 作品
       await _this.$refs.courseCon.submitForm().then(res => {
-        // console.log('courseCon', res)
         if (res.code === 200) {
           _this.isCheck = true
           _this.dataList.teacher_id = res.data.teacher_id
@@ -161,7 +150,6 @@ export default {
           _this.dataList.price = res.data.price
           _this.dataList.top_img = res.data.top_img
           _this.dataList.sort = res.data.sort
-        //   _this.dataList.top_img = _this.$refs.courseCon.image
         } else {
           this.isCheck = false
         }
@@ -199,7 +187,6 @@ export default {
       }
       createCourse(jsonData).then(res => {
         if (res.data && res.code === 200) {
-          // console.log(res)
           this.$message({
             message: res.msg,
             type: 'success'
@@ -247,7 +234,6 @@ export default {
       }
       editCourse(jsonData).then(res => {
         if (res && res.code === 200) {
-          // console.log(res)
           this.$message({
             message: res.msg,
             type: 'success'

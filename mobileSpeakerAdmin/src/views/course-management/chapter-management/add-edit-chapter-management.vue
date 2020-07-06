@@ -163,7 +163,7 @@ export default {
       }
       chapterDetail(jsonData).then(res => {
         if (res.data && res.code === 200) {
-          this.dataList = res.data[0]
+          this.dataList = res.data
         }
       }).catch(err => {
         console.log(err)

@@ -444,8 +444,8 @@ export default {
     border-radius: 6px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    width: 150px;
-    height: 150px;
+    width: 240px;
+    height: 160px;
     text-align: center;
     position: relative;
     overflow: hidden;

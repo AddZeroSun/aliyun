@@ -115,7 +115,6 @@
           </el-table-column>
           <el-table-column align="center" fixed="right" label="操作" width="150">
             <template slot-scope="scope">
-              <!-- <el-button type="text" size="small" @click="freezeData(scope.row.id)">冻结</el-button> -->
               <el-button type="text" size="small" @click="openAdd(scope.row.id, 1, scope.row)">修改</el-button>
             </template>
           </el-table-column>
@@ -123,16 +122,6 @@
         <div class="pagination_body">
           <el-pagination background class="pagination" :current-page="page.currentPage" :page-sizes="page.pageSizes" :page-size="page.pageSize" layout="total, sizes, prev, pager, next, jumper" :page-count="page.total_page" @size-change="handleSizeChange" @current-change="handleCurrentChange" />
         </div>
-        <!-- 后台管理 -->
-        <!-- <el-dialog title="后台管理" :visible.sync="showDialog" width="500px">
-          <div>
-            <account-management-dialog ref="AccountManagementDialog" :type="type" :list="rowList" />
-          </div>
-          <div slot="footer" class="dialog-footer">
-            <el-button @click="showDialog = false">取 消</el-button>
-            <el-button type="primary" :loading="loading" @click="save">确 定</el-button>
-          </div>
-        </el-dialog> -->
       </div>
     </el-card>
   </div>
@@ -198,14 +187,7 @@ export default {
       'name'
     ])
   },
-  watch: {
-    // $route: {
-    //   handler: function(route) {
-    //     this.redirect = route.query && route.query.redirect
-    //   },
-    //   immediate: true
-    // }
-  },
+  watch: {},
   created() {
     this.keyupSubmit()
     // 获取管理员列表
@@ -393,13 +375,11 @@ export default {
     save() {
       const _this = this
       _this.$refs.AccountManagementDialog.submitForm().then(res => {
-        // console.log('AccountManagementDialog', res)
         if (res.code === 200) {
           this.admin_data.phone = res.data.phone
           this.admin_data.username = res.data.name
           this.admin_data.status = res.data.status
           this.admin_data.admin_id = localStorage.getItem('userId')
-          // console.log(res.data.platform)
           this.admin_data.app_id = JSON.stringify(res.data.platform)
           if (this.type === 0) {
             this.addAdminData()

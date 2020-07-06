@@ -46,7 +46,7 @@ service.interceptors.response.use(
    */
   response => {
     const res = response.data
-    console.log(res)
+    // console.log(res)
     if (res.code === 401) {
       Utils.$emit('userLogin', res)
       // this.$router.push({ path: '/login' })
