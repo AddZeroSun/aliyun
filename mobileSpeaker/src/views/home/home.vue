@@ -72,6 +72,7 @@ export default {
   components: {},
   data () {
     return {
+      authSign: '48b631799fa1db87230f1f9730f70a2a', // 签名
       searchKey: '',
       images: ['1.jpg', '2.jpg', '../../assets/images/product/takeTV.wepb'],
       teachers: [
@@ -151,28 +152,26 @@ export default {
     // 获取推荐名师列表
     getTeacherRecommendList () {
       const jsonData = {
-        is_recommend: 1
-        // sign: '#@&hbvsky@#&'
+        is_recommend: 1,
+        sign: this.authSign
       }
       teacherRecommendList(jsonData).then(res => {
         if (res.data && res.code === 200) {
           this.teachers = res.data
-          this.page.total_page = parseInt(res.total)
         }
       }).catch(err => {
         console.log(err)
       })
     },
-    // 获取推荐名师列表
+    // 获取推荐课程列表
     getCourseRecommendList () {
       const jsonData = {
         is_recommend: 1,
-        sign: '#@&hbvsky@#&'
+        sign: this.authSign
       }
       courseRecommendList(jsonData).then(res => {
         if (res.data && res.code === 200) {
-          this.teachers = res.data
-          this.page.total_page = parseInt(res.total)
+          this.courses = res.data
         }
       }).catch(err => {
         console.log(err)

@@ -14,20 +14,22 @@ const service = axios.create({
 // request interceptor
 service.interceptors.request.use(
   config => {
-    console.log(config)
-    let data = setSign(config.data)
-    config.data.sign = data
+    // console.log(config)
+    // let data = setSign(config.data)
+    // let signData = setSign('48b631799fa1db87230f1f9730f70a2a')
+    // let signData = '48b631799fa1db87230f1f9730f70a2a' // 临时签名
+    // config.data.sign = data
+    // config.data.sign = signData
     // do something before request is sent
     if (xsrfToken()) {
       // let each request carry token
       // ['X-Token'] is a custom headers key
       // please modify it according to the actual situation
       // config.headers['X-XSRF-TOKEN'] = xsrfToken()
-      config.headers['user-from'] = 2
-      config.headers['x-sms-token'] = xsrfToken()
+      // config.headers['user-from'] = 2
+      // config.headers['x-sms-token'] = xsrfToken()
       config.headers['token'] = xsrfToken()
     }
-    // console.log(config.data)
     return config
   },
   error => {
@@ -53,8 +55,7 @@ service.interceptors.response.use(
     const res = response.data
     // console.log(res)
     const status = parseInt(res.code)
-    // console.log(status)
-    if (status === 401) {
+    if (status === 200) {
       // Utils.$emit('userLogin', status)
       // // this.$router.push({ path: '/login' })
       // store.dispatch('user/resetToken').then(() => {
@@ -87,6 +88,14 @@ service.interceptors.response.use(
     // } else {
     //   return res
     // }
+    else {
+      console.log(res)
+      Toast({
+        message: res.msg,
+        type: 'error',
+        duration: 5 * 1000
+      })
+    }
     return res
   },
   error => {

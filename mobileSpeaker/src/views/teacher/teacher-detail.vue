@@ -6,7 +6,7 @@
       </div>
       <div class="teacher_ban">
         <div class="teacher_ban_img">
-          <van-image :src="teacher.headlogo" round width="60" height="60" fit="cover"></van-image>
+          <van-image :src="teacher.head" round width="60" height="60" fit="cover"></van-image>
         </div>
         <div class="teacher_ban_info">
           <p class="info_name">{{teacher.name}}</p>
@@ -14,42 +14,22 @@
             <van-grid :border="false" :column-num="3">
                   <van-grid-item class="info_status_item">
                     <div>
-                      <p>{{teacher.courceAmount}}</p>
+                      <p>{{courses_num}}</p>
                       <p>课程数量</p>
                     </div>
                   </van-grid-item>
                   <van-grid-item class="info_status_item">
                     <div>
-                      <p>{{teacher.learnAmount}}</p>
-                      <p>学习人数</p>
+                      <p>{{teacher.collect_num}}</p>
+                      <p>收藏人数</p>
                     </div>
                   </van-grid-item>
                   <van-grid-item class="info_status_collect">
-                    <van-button size="small" icon="like-o">收藏</van-button>
+                    <van-button size="small" icon="like-o" @click="handleCollect">收藏</van-button>
                   </van-grid-item>
                 </van-grid>
           </div>
         </div>
-        <!-- <van-grid :border="false" :column-num="4">
-                  <van-grid-item class="info_status_item">
-                      <van-image :src="teacher.headlogo" round width="80" height="80" fit="cover"></van-image>
-                  </van-grid-item>
-                  <van-grid-item class="info_status_item">
-                    <div>
-                      <p>{{teacher.courceAmount}}</p>
-                      <p>课程数量</p>
-                    </div>
-                  </van-grid-item>
-                  <van-grid-item class="info_status_item">
-                    <div>
-                      <p>{{teacher.learnAmount}}</p>
-                      <p>学习人数</p>
-                    </div>
-                  </van-grid-item>
-                  <van-grid-item class="info_status_collect">
-                    <van-button size="small" icon="like-o" color="transparent" plain>收藏</van-button>
-                  </van-grid-item>
-                </van-grid> -->
       </div>
       <div class="details_tab">
         <van-tabs v-model="active" title-active-color="#d2bd7a" color="#d2bd7a">
@@ -61,7 +41,7 @@
               finished-text="没有更多了"
               @load="onLoad"
             >
-              <van-cell class="con_list_cell" v-for="(item, index) in courceList" :key="index">
+              <van-cell class="con_list_cell" v-for="(item, index) in courses_list" :key="index">
                 <van-grid :border="false" :column-num="2" :center="false">
                   <van-grid-item class="con_cell_grid_left">
                     <div class="list_con">
@@ -85,7 +65,7 @@
             </van-list>
           </van-tab>
           <van-tab title="讲师介绍">
-            <div class="introduce">{{teacher.introduce}}</div>
+            <div class="introduce">{{teacher.info}}</div>
           </van-tab>
         </van-tabs>
       </div>
@@ -94,99 +74,81 @@
 </template>
 
 <script>
+import { teacherDetail } from '@/api/home.js'
 export default {
-  name: "Home",
+  name: 'Home',
   components: {},
-  data() {
+  data () {
     return {
-      navTitle: "讲师的主页",
+      authSign: '48b631799fa1db87230f1f9730f70a2a', // 签名
+      navTitle: '讲师的主页',
       active: 0,
-      tabLeft: "全部课程(0)",
-      courceList: [
-        {
-          name: "语文犯得上发生二分三分瑟夫瑟夫二分三分是粉色",
-          imgUrl: "https://img.yzcdn.cn/vant/apple-1.jpg",
-          price: 300.0,
-          section: "32",
-          number: "999"
-        },
-        {
-          name: "语文",
-          imgUrl: "https://img.yzcdn.cn/vant/apple-1.jpg",
-          price: 300.0,
-          section: "32",
-          number: "999"
-        },
-        {
-          name: "语文",
-          imgUrl: "https://img.yzcdn.cn/vant/apple-1.jpg",
-          price: 0,
-          section: "32",
-          number: "999"
-        },
-        {
-          name: "语文",
-          imgUrl: "https://img.yzcdn.cn/vant/apple-1.jpg",
-          price: 300.0,
-          section: "32",
-          number: "999"
-        },
-        {
-          name: "语文",
-          imgUrl: "https://img.yzcdn.cn/vant/apple-1.jpg",
-          price: 300.0,
-          section: "32",
-          number: "999"
-        },
-        {
-          name: "语文",
-          imgUrl: "https://img.yzcdn.cn/vant/apple-1.jpg",
-          price: 300.0,
-          section: "32",
-          number: "999"
-        }
-      ],
+      tabLeft: '全部课程(0)',
+      courses_num: 0,
+      courses_list: [],
       loading: false,
       finished: false,
-      teacherID: this.$route.teacherID,
+      teacher_id: this.$route.teacher_id,
       teacher: {
-        introduce:
-          "jaw来得及未来的家电节阿伟到家阿达地位家电节艾娃多久哦爱大家哦爱段位ijdoai大家奥尼打的阿大家奥尼滴啊为大家奥迪姐",
-        teacherID: null,
-        name: "张三",
-        headlogo: "https://img.yzcdn.cn/vant/cat.jpeg",
-        courceAmount: 10,
-        learnAmount: 1232321
+        collect_num: 0,
+        head: '',
+        name: '',
+        sex_text: '',
+        phone: '',
+        info: '',
+        sort: '',
+        add_time: ''
       }
-    };
+    }
   },
   computed: {},
   watch: {},
-  created() {},
-  mounted() {},
-  destroyed() {},
+  created () {
+    this.teacher_id = this.$route.query.teacher_id
+    this.getTeacherDetail()
+  },
+  mounted () {},
+  destroyed () {},
   methods: {
-    indexListData() {},
-    onClickLeft() {
-      this.$router.go(-1);
+    indexListData () {},
+    // 获取名师详情
+    getTeacherDetail () {
+      const jsonData = {
+        teacher_id: this.teacher_id,
+        sign: this.authSign
+      }
+      teacherDetail(jsonData).then(res => {
+        if (res.data && res.code === 200) {
+          this.courses_list = res.data.courses_list
+          this.courses_num = this.courses_list.length
+          this.teacher = res.data.teacher_Info
+        }
+      }).catch(err => {
+        console.log(err)
+      })
     },
-    onLoad() {
+    // 后退
+    onClickLeft () {
+      this.$router.go(-1)
+    },
+    // 收藏
+    handleCollect () {
+
+    },
+    onLoad () {
       // 异步更新数据
       setTimeout(() => {
-        for (let i = 0; i < 10; i++) {
-          this.courceList.push(this.courceList.length + 1);
-        }
         // 加载状态结束
-        this.loading = false;
+        this.loading = false
 
         // 数据全部加载完成
-        if (this.courceList.length >= 40) {
-          this.finished = true;
+        if (this.courses_list.length === 0) {
+          this.finished = true
         }
-      }, 500);
+      }, 500)
     }
   }
-};
+}
 </script>
 <style lang="scss">
 .teacher_detail {
@@ -249,7 +211,7 @@ export default {
           padding-left: 100px;
         }
         .info_status {
-          
+
           .van-grid-item__content {
             background-color: red;
           }
@@ -262,8 +224,7 @@ export default {
             // color: #ffffff;
           }
         }
-        
-        
+
       }
     }
     .teacher_ban:after {

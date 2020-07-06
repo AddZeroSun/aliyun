@@ -6,7 +6,8 @@ const TokenKey = 'vue_admin_template_token'
 export function xsrfToken () {
   // 获取登录态的方法
   // return decodeURIComponent(Cookies.get('token'))
-  return localStorage.getItem('token')
+  // return localStorage.getItem('token')
+  return '1'
   // return 'Bearer ' + localStorage.getItem('Authorization')
 }
 

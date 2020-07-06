@@ -32,7 +32,7 @@
     min-height: 100%;
     background-color: #f1f0f5;
     .layout-main {
-      // margin-bottom: 33px;
+      margin-bottom: 34px;
       // height: 100vh;
     }
     .layout-footer {
