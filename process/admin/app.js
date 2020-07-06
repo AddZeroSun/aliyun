@@ -17,7 +17,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
+// 此处更改网站文件夹目录
+app.use(express.static(path.join(__dirname, '../../mobileSpeakerAdmin/dist')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

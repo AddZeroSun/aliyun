@@ -19,7 +19,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(express.static(path.resolve(__dirname, '../web/dist'))); //dist目录为静态文件
+// 此处更改网站文件夹目录
+app.use(express.static(path.resolve(__dirname, '../../mobileSpeaker/dist'))); //dist目录为静态文件
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
